@@ -90,11 +90,9 @@ a {
 	margin:-3px;
 }
 
-body {
-	overflow:hidden;
-}
 .map {
 	position: absolute;
+	top: 200px;
 }
 .overlappingMapObject {
 	opacity:0.5;

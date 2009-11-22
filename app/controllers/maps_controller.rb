@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+  # Tests: Only for actions of 3+ lines.
 
   def index
     @maps = Map.find :all
@@ -6,6 +7,7 @@ class MapsController < ApplicationController
 
   def show
     @map = Map.find(params[:id])
+    @entity = Entity.new(params[:entity])
   end
 
   def new
@@ -26,6 +28,7 @@ class MapsController < ApplicationController
     @map.update_attributes(params[:map])
   end
 
+  # Needs tests!
   def clone
     @map = Map.find(params[:id])
     @new_map = Map.new(@map.attributes)

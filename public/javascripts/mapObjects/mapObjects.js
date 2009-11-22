@@ -130,7 +130,7 @@ MapObject.selectNext = function(){
 
 $(function() {
 	// Onload, sets up a bunch of stuff.
-	$("*").keydown(function(e) {
+	$("body").keydown(function(e) {
 		var dx = {
 			37: -1,
 			39: 1

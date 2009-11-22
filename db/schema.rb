@@ -9,7 +9,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091122033704) do
+ActiveRecord::Schema.define(:version => 20091122063958) do
+
+  create_table "entities", :force => true do |t|
+    t.integer  "map_id",                                   :null => false
+    t.integer  "user_id"
+    t.string   "name",           :default => "New Object", :null => false
+    t.integer  "pos_x",          :default => 1,            :null => false
+    t.integer  "pos_y",          :default => 1,            :null => false
+    t.integer  "size",           :default => 1,            :null => false
+    t.integer  "speed",          :default => 6,            :null => false
+    t.string   "image_filename", :default => "image.png",  :null => false
+    t.boolean  "deadzone",       :default => false,        :null => false
+    t.boolean  "locked",         :default => false,        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entities", ["map_id", "name"], :name => "index_entities_on_map_id_and_name", :unique => true
+  add_index "entities", ["user_id"], :name => "index_entities_on_user_id"
 
   create_table "maps", :force => true do |t|
     t.string   "image_filename", :default => "map.jpg"

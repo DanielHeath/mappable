@@ -1,0 +1,12 @@
+<% form_for [@map, @entity] do |f| %>
+	<%= f.hidden_field :map_id, :value => @map.id %>
+	<p>Image Filename: <%= f.text_field :image_filename %></p>
+	<p>Name: <%= f.text_field :name %></p>
+	<p>Size: <%= f.text_field :size %></p>
+	<p>Starting position X: <%= f.text_field :pos_x %></p>
+	<p>Starting position Y: <%= f.text_field :pos_y %></p>
+	<p>Movement speed: <%= f.text_field :speed %></p>
+	<p>Immobile?: <%= f.check_box :locked %></p>
+	<p>Prevent other entities moving into this space?: <%= f.check_box :deadzone %></p>
+	<%= f.submit %>
+<% end %>
