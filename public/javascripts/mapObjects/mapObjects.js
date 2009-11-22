@@ -18,8 +18,8 @@ function MapObject(name, map, image, options) {
 	});
 	
 	// Set position/size info
-	this.xGrid = options.left - 1;
-  this.yGrid = options.top - 1;
+	this.xGrid = options.left;
+  this.yGrid = options.top;
 	this.sizeGrid = options.size || 1;
 	this.reDraw(true);
 
@@ -105,9 +105,7 @@ MapObject.prototype.move = function(x, y){
 
 	this.xGrid = newPositions.xGrid;
 	this.yGrid = newPositions.yGrid;
-	
-	this.reDraw();
-	this.afterMove();
+	this.afterMove(oldPositions);
 }
 
 MapObject.prototype.outOfBounds = function(position){
@@ -140,11 +138,9 @@ $(function() {
 			40: 1
 		}
 		if (dx[e.which] || dy[e.which]) {
-			MapObject.last_selected.move(dx[e.which], dy[e.which]);			
+			MapObject.last_selected.move(dx[e.which], dy[e.which]);
 			MapObject.last_selected.reDraw();
 			e.preventDefault();
-//			MapObject.last_selected.element.animate(actions[e.which], "fast")
-//			$.ajax({url: "I think URL is the name to use, check that."})
 		};
 		if (e.which == 9) {
 			MapObject.selectNext();

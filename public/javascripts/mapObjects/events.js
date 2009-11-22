@@ -3,7 +3,7 @@ MapObject.prototype.beforeMove = function(newPositions){
 	return true;
 }
 
-MapObject.prototype.afterMove = function(){
+MapObject.prototype.afterMove = function(oldPositions){
 	// Do nothing unless overridden.
 	// Return value is ignored.
 }

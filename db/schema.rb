@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091122063958) do
+ActiveRecord::Schema.define(:version => 20091122081812) do
 
   create_table "entities", :force => true do |t|
     t.integer  "map_id",                                   :null => false
@@ -42,5 +42,19 @@ ActiveRecord::Schema.define(:version => 20091122063958) do
   end
 
   add_index "maps", ["name"], :name => "index_maps_on_name", :unique => true
+
+  create_table "moves", :force => true do |t|
+    t.integer  "entity_id"
+    t.integer  "old_x"
+    t.integer  "old_y"
+    t.integer  "new_x"
+    t.integer  "new_y"
+    t.integer  "turn"
+    t.string   "abilities"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "moves", ["entity_id", "created_at"], :name => "index_moves_on_entity_id_and_created_at"
 
 end
