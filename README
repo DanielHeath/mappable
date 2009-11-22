@@ -45,9 +45,6 @@ get /maps/id/turns/1/moves (list moves)
 
 
 Order to create stuff in (most to least interesting)
-Maps/Objects (no user/login support; anyone can modify)
-Objects (no user/login support; anyone can modify)
-Moves (no user/login support)
 Users
 Logins
 Users/Objects & Moves

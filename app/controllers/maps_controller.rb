@@ -37,4 +37,11 @@ class MapsController < ApplicationController
     redirect_to @new_map
   end
 
+  def next_turn
+    @map = Map.find(params[:id])
+    @map.current_turn += 1
+    @map.save!
+    redirect_to @map
+  end
+  
 end

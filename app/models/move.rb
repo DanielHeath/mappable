@@ -1,5 +1,6 @@
 class Move < ActiveRecord::Base
   belongs_to :entity
+  validates_presence_of :movement_used, :in => (0..(1.5))
   
   def movement_used
     dx = (new_x - old_x).abs
