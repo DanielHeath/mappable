@@ -1,0 +1,9 @@
+<% form_for @map do |f| %>
+	<p>Map Name: <%= f.text_field :name %></p>
+	<p>Map Filename: <%= f.text_field :image_filename %></p>
+	<p>Number of squares across: <%= f.text_field :width %></p>
+	<p>Number of squares down: <%= f.text_field :height %></p>
+	<p>X offset (pixels): <%= f.text_field :x_offset %></p>
+	<p>Y offset (pixels): <%= f.text_field :y_offset %></p>
+	<%= f.submit %>
+<% end %>

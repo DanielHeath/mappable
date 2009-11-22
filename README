@@ -1,0 +1,68 @@
+Rails mappable app
+
+I want signup/auth that works.
+/sessions/create (login)
+/user (singular, current user)
+
+I want have multiple maps
+get /maps/#{name} (view specific map)
+
+I want to make objects on the maps
+post /maps/#{name}/objects
+
+I want state to be preserved between maps
+I want my app to return allow/deny info for a move, and update object info.
+post /maps/#{name}/moves/ (ajax; send object-id, move info)
+
+I want my app to track whose turn it is and how much movement/action everything has this turn.
+I want to send my app actions other than movement (which should be customised when creating the object on the map).
+I want objects that aren't selectable but interfere with movement.
+I want a list of every move made in a given turn.
+
+
+Schema:
+
+users(acts_as_authenticated)
+maps(imagename:string, mapname:string (unique), width:integer, height:integer, current_turn:integer, user_id:integer)
+objects(map_id:integer, name:string(unique :scope => map_id), pos_x:integer, pos_y:integer, size:integer, user_id:integer, squares_per_move_action:integer)
+abilities( object_id:integer, name:string, action_type:string )
+moves(object_id, turn_number, start_x:integer, start_y:integer, end_x:integer, end_y:integer, action:string, t.created_at)
+
+Controllers/Resources:
+ * Signup
+post /sessions/create (login)
+resource /user (singular, current user or create user, profile page)
+ * Maps
+get /maps/id (view specific map and act if you have any objects with actions remaining)
+get /maps/new
+post /maps (create new map)
+put /maps/id (update a map)
+delete /maps/id (I'm done with this map.)
+clone /maps/id
+ * Moves
+post /maps/id/moves (make a move)
+get /maps/id/turns/1/moves (list moves)
+
+
+Order to create stuff in (most to least interesting)
+Maps/Objects (no user/login support; anyone can modify)
+Objects (no user/login support; anyone can modify)
+Moves (no user/login support)
+Users
+Logins
+Users/Objects & Moves
+Users/Maps
+
+Set global 'animating' variable and ignore keystrokes while set || animate overlap transparency.
+
+Delayed commit for actions (ie show a stack of actions and allow the user to rollback)
+
+Squares with higher / lower movement costs.
+Vision / visibility - customise map w/ imagemagick, only show some objects.
+Height - allow multi-level maps.
+
+RSpec for controllers/models
+
+
+Tobias: @tobico me@tobiascohen.com github:tobico
+Recommends Mozilla Developer Connection - JS tutorial
