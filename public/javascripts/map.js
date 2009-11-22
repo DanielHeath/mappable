@@ -1,7 +1,10 @@
 function Map(image, options) {
 	this.options = options;
 	this.element = $("<img/>").attr({src: image, className: "map"});
-	$("body").prepend(this.element);
+	var contnr = $("<div/>")
+	$("body").append(contnr)
+	contnr.append(this.element)
+	
 
 	this.xOffset = options.xOffset || 0;
 	this.yOffset = options.yOffset || 0;

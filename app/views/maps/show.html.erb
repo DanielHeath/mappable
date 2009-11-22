@@ -1,3 +1,4 @@
+<%= render :partial => '/entities/form' %>
 <script>
 $(function() {
 	var map = new Map("/images/<%= @map.image_filename %>", {gridX: <%= @map.width %>, gridY:<%= @map.height %>, xOffset:<%= @map.x_offset %>, yOffset:<%= @map.y_offset %>});
@@ -8,4 +9,3 @@ $(function() {
 	<% end %>
 });
 </script>
-<%= render :partial => '/entities/form' %>

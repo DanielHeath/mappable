@@ -92,7 +92,9 @@ a {
 
 .map {
 	position: absolute;
-	top: 200px;
+}
+div.mapContainer {
+	position: relative;
 }
 .overlappingMapObject {
 	opacity:0.5;
