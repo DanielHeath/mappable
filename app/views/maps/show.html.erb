@@ -1,4 +1,10 @@
 <%= render :partial => '/entities/form' %>
+
+<% form_for @map, :html => { :method => :delete } do |f| %>
+	<%= submit_tag "Delete Map", :confirm => "Are you sure you want to completely delete this map?" %>
+<% end %>
+
+
 <%= link_to "Next Turn", "/maps/next_turn/#{@map.id}", :confirm => "No further moves for this turn will be allowed. Really end the turn?" %>
 <script>
 $(function() {

@@ -2,6 +2,7 @@ class MapsController < ApplicationController
   # Tests: Only for actions of 3+ lines.
 
   def index
+    @map = Map.new
     @maps = Map.find :all
   end
 
@@ -26,6 +27,12 @@ class MapsController < ApplicationController
   def update
     @map = Map.find(params[:id])
     @map.update_attributes(params[:map])
+    redirect_to @map
+  end
+  
+  def destroy
+    Map.delete(params[:id])
+    redirect_to :action => :index
   end
 
   # Needs tests!
