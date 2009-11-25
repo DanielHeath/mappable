@@ -27,11 +27,7 @@ var <%= entity.name.gsub(' ','_') %>_entity = new MapObject("<%= entity.name %>"
 			self.xGrid = oldPositions.xGrid;
 			self.yGrid = oldPositions.yGrid;
 			self.reDraw();
+			MapObject.opacifyOverlapping();
 		}
 	});
 };
-
-
-/*
-	var copyOldPositions = $.extend({}, oldPositions);
-*/

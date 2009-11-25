@@ -39,24 +39,21 @@ MapObject.prototype.doCollisions = function(oldPositions, newPositions){
 	jQuery.each(whileOverlap, function(o) {allowMovement = allowMovement && self.onMoveWhileOverlappingObject(whileOverlap[o])});
 	jQuery.each(noLongerOverlap, function(o) {allowMovement = allowMovement && self.onLeaveObjectSpace(noLongerOverlap[o])});
 	
-	if (allowMovement) {
-		
-	};
-	
 	return allowMovement;
 };
 
-MapObject.prototype.opacifyOverlapping = function(oldPositions, newPositions){
+MapObject.prototype.anyOverlap = function(){
 	var self = this;
-	var oldOverlap = this.getOverlapping(oldPositions);
-	var newOverlap = this.getOverlapping(newPositions);
-		
-	jQuery.each(oldOverlap, function(o) {
-		oldOverlap[o].element.removeClass("overlappingMapObject");
-		self.element.removeClass("overlappingMapObject");
-	});
-	jQuery.each(newOverlap, function(o) {
-		newOverlap[o].element.addClass("overlappingMapObject");
-		self.element.addClass("overlappingMapObject");
-	});
+	return this.getOverlapping(self);
+}
+
+MapObject.opacifyOverlapping = function(){
+	jQuery.each(MapObject.list, function(o){
+		if (MapObject.list[o].anyOverlap()[0]) {
+			MapObject.list[o].element.addClass("overlappingMapObject");
+		} else {
+			MapObject.list[o].element.removeClass("overlappingMapObject");
+		};		
+	})
+
 }

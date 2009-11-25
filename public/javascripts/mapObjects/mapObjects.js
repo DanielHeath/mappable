@@ -101,10 +101,11 @@ MapObject.prototype.move = function(x, y){
 	
 	if (stopMovement) return false;
 	
-	this.opacifyOverlapping(oldPositions, newPositions);
-
 	this.xGrid = newPositions.xGrid;
 	this.yGrid = newPositions.yGrid;
+
+	MapObject.opacifyOverlapping();
+
 	this.afterMove(oldPositions);
 }
 

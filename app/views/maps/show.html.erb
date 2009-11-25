@@ -11,5 +11,6 @@ $(function() {
 		});
 	
 	<%= render :partial => 'entities/show', :collection => @map.entities, :as => :entity %>
+	MapObject.opacifyOverlapping();
 });
 </script>

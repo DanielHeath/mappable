@@ -23,30 +23,19 @@ I want a list of every move made in a given turn.
 Schema:
 
 users(acts_as_authenticated)
-maps(imagename:string, mapname:string (unique), width:integer, height:integer, current_turn:integer, user_id:integer)
-objects(map_id:integer, name:string(unique :scope => map_id), pos_x:integer, pos_y:integer, size:integer, user_id:integer, squares_per_move_action:integer)
 abilities( object_id:integer, name:string, action_type:string )
-moves(object_id, turn_number, start_x:integer, start_y:integer, end_x:integer, end_y:integer, action:string, t.created_at)
 
 Controllers/Resources:
  * Signup
 post /sessions/create (login)
 resource /user (singular, current user or create user, profile page)
  * Maps
-get /maps/id (view specific map and act if you have any objects with actions remaining)
-get /maps/new
-post /maps (create new map)
-put /maps/id (update a map)
 delete /maps/id (I'm done with this map.)
-clone /maps/id
  * Moves
-post /maps/id/moves (make a move)
 get /maps/id/turns/1/moves (list moves)
 
-
 Order to create stuff in (most to least interesting)
-Users
-Logins
+Users / Logins
 Users/Objects & Moves
 Users/Maps
 
@@ -55,10 +44,12 @@ Set global 'animating' variable and ignore keystrokes while set || animate overl
 Delayed commit for actions (ie show a stack of actions and allow the user to rollback)
 
 Squares with higher / lower movement costs.
-Vision / visibility - customise map w/ imagemagick, only show some objects.
+Vision / visibility - customise map w/ serverside imagemagick, only show some objects.
 Height - allow multi-level maps.
 
 RSpec for controllers/models
+
+Todo: Should be able to hook afterMove() (to do ajax-y stuff) and afterMoveSuccess() (which should only be called when all registered AJAX is finished.)
 
 
 Tobias: @tobico me@tobiascohen.com github:tobico

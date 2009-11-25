@@ -41,6 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :maps do |maps|
     maps.resources :entities
   end
+  map.root :controller => :maps
   map.resources :moves, :only => :create
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
