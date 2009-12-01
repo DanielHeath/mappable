@@ -1,0 +1,29 @@
+
+Todos:
+Todo: Users / Logins (openid)
+Todo: Users/Objects & Moves
+Todo: Users/Maps
+Todo: Add RSpec tests for controllers/models.
+Todo: Integrate with RPOL. To GM a game, enter your RPOL login details and the thread. 
+Everyone who has posted in the thread will be added to the game, along with their character profile.
+Todo: Should be able to hook afterMove() (to do ajax-y stuff) and afterMoveSuccess() (which should only be called when all registered AJAX is finished.)
+Todo: Diagonal movement.
+Todo: Track whose turn it is and how much movement/action everything has this turn.
+Todo: Get a list of every move made in a given turn.
+Todo: Show a list of moves made this turn, last turn in the history.
+Todo: Actions other than movement. Users can enter arbitrary text for actions 
+ * Schema:
+ * moves (action:text, moves_used:integer (may be negative e.g. activate boots of speed), t.remove_column 'abilities')
+ * Controllers/Resources:
+ *  * Moves
+ *  *  * get /maps/id/turns/turn_number/moves (list moves, by object. sort objects by initiative when they have it.)
+Todo: Squares with higher / lower movement costs (immutable objects?).
+Todo: Don't prevent moves which break the rules - instead allow the player to enter an explanation which the GM may accept or deny. 
+Todo: Delayed commit for actions (ie show a stack of actions and allow the user to rollback). 
+ * This will require checking moves against the server without saving them. 
+ * Each move you send the entire stack and the server tells you if it's still OK.
+ * Alternative: Undo stack with DB backing. Every action should be reversable (delete it when reversed).
+
+The hard stuff:
+Todo: Vision / visibility - customise map w/ serverside imagemagick, only show some objects.
+Todo: Height - allow multi-level maps.

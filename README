@@ -1,56 +1,6 @@
 Rails mappable app
 
-I want signup/auth that works.
-/sessions/create (login)
-/user (singular, current user)
+This application supports play-by-post roleplaying games by providing a visualisation of the environment which the players are moving through.
 
-I want have multiple maps
-get /maps/#{name} (view specific map)
-
-I want to make objects on the maps
-post /maps/#{name}/objects
-
-I want state to be preserved between maps
-I want my app to return allow/deny info for a move, and update object info.
-post /maps/#{name}/moves/ (ajax; send object-id, move info)
-
-I want my app to track whose turn it is and how much movement/action everything has this turn.
-I want to send my app actions other than movement (which should be customised when creating the object on the map).
-I want objects that aren't selectable but interfere with movement.
-I want a list of every move made in a given turn.
-
-
-Schema:
-
-users(acts_as_authenticated)
-abilities( object_id:integer, name:string, action_type:string )
-
-Controllers/Resources:
- * Signup
-post /sessions/create (login)
-resource /user (singular, current user or create user, profile page)
- * Maps
-delete /maps/id (I'm done with this map.)
- * Moves
-get /maps/id/turns/1/moves (list moves)
-
-Order to create stuff in (most to least interesting)
-Users / Logins
-Users/Objects & Moves
-Users/Maps
-
-Set global 'animating' variable and ignore keystrokes while set || animate overlap transparency.
-
-Delayed commit for actions (ie show a stack of actions and allow the user to rollback)
-
-Squares with higher / lower movement costs.
-Vision / visibility - customise map w/ serverside imagemagick, only show some objects.
-Height - allow multi-level maps.
-
-RSpec for controllers/models
-
-Todo: Should be able to hook afterMove() (to do ajax-y stuff) and afterMoveSuccess() (which should only be called when all registered AJAX is finished.)
-
-
-Tobias: @tobico me@tobiascohen.com github:tobico
-Recommends Mozilla Developer Connection - JS tutorial
+There are many planned features, some of which may even get implemented one day. 
+See the TODO file included with the application for details.
