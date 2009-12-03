@@ -1,6 +1,22 @@
+How will this be laid out code-wise?
+ * Controller - receive request with rpol username/password, game URL, groups?
+ * Pass these through to RPOLScraper module, which returns an array of Entity (all saved)
+ * Display the results with ajax forms to delete/modify records.
+ * 
 
 Todos:
-Todo: Users / Logins (openid)
+Todo: Build an event replacer for JS so I can have lots of event handlers for the same event.
+ * EVENTER.onLoad.myAppName = function()
+ * EVENTER.onLoad.(un)suspend('myAppName') (moves function to 'suspended' internal variable)
+ * All events can now go through the eventer - allowing you to avoid having to method chain, and sort out what happens when you want to switch off your function.
+Todo: Can still keep pressing buttons quickly to get position out of sync with server.
+Todo: Users / Logins
+ 	Update: forget about openid. 
+	 * Login using your RPOL username & password (unless RPOL wants to provide openid).
+	 * Create new maps by entering an image URL for the background, and a game id on RPOL (optionally specify a group).
+	 * Mappable pulls in all of that games character avatars & names.
+	 * GM is then presented with a list of characters and prompted to include/exclude & fill in movement info etc.
+	 * customise: individual instances could be run for individual battles, with custom code inserted for specific maps.
 Todo: Users/Objects & Moves
 Todo: Users/Maps
 Todo: Add RSpec tests for controllers/models.
