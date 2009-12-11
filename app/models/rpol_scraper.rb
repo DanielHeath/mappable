@@ -38,7 +38,7 @@ module RPOLScraper
     begin
       /<img.*src=["']([^"]+)["'].*onerror=["']np\(this\)["']/i.match(page)[1]
     rescue
-      "Couldn't find this portrait"
+      ""
     end
   end
 end

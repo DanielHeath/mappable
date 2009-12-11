@@ -17,7 +17,14 @@ class MapsController < ApplicationController
 
   def create
     @map = Map.new(params[:map])
-    @map.save ? redirect_to(@map) : render(:new)
+    if @map.save
+      if @map.game_id
+        @entities = RPOLScraper.scrape_game_characters(@map, @map.game_id).flatten
+      end
+      redirect_to(@map) 
+    else
+      render(:new)
+    end
   end
 
   def edit
@@ -49,21 +56,6 @@ class MapsController < ApplicationController
     @map.current_turn += 1
     @map.save!
     redirect_to @map
-  end
-  
-  def new_from_rpol
-    # Basically just a dumb template.
-    @map = Map.new
-  end
-  
-  def create_from_rpol
-    # Real code is commented out. Mock code below lets me work on the views.
-    @map = Map.create!(:name => "New " + rand().to_s[0..5], :image_filename => 'map.jpg')
-    @entities = RPOLScraper.scrape_game_characters(@map, 7303).flatten
-#    @map = Map.new(:name => params[:map_name], :image_filename => params[:image])
-#    if @map.set_game_id_from_url(params[:game_url])
-#    @entities = RPOLScraper.scrape_game_characters(@map, 7303).flatten
-#    end
   end
   
 end

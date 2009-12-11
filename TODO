@@ -1,9 +1,3 @@
-How will this be laid out code-wise?
- * Controller - receive request with rpol username/password, game URL, groups?
- * Pass these through to RPOLScraper module, which returns an array of Entity (all saved)
- * Display the results with ajax forms to delete/modify records.
- * 
-
 Todos:
 Todo: Build an event replacer for JS so I can have lots of event handlers for the same event.
  * EVENTER.onLoad.myAppName = function()

@@ -16,7 +16,7 @@ $(function() {
 			yOffset:<%= @map.y_offset %>
 		});
 	
-	<%= render :partial => 'entities/show', :collection => @map.entities, :as => :entity %>
+	<%= render :partial => 'entities/show_on_map', :collection => @map.entities, :as => :entity %>
 	MapObject.opacifyOverlapping();
 });
 </script>

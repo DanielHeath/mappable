@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091122081812) do
+ActiveRecord::Schema.define(:version => 20091211041803) do
 
   create_table "entities", :force => true do |t|
     t.integer  "map_id",                                   :null => false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20091122081812) do
     t.integer  "y_offset",       :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "game_id"
   end
 
   add_index "maps", ["name"], :name => "index_maps_on_name", :unique => true
