@@ -1,3 +1,6 @@
+Todo: Integrate with RPOL. To GM a game, enter your RPOL login details and the thread. 
+Everyone who has posted in the thread will be added to the game, along with their character profile.
+
 Todos:
 Todo: Build an event replacer for JS so I can have lots of event handlers for the same event.
  * EVENTER.onLoad.myAppName = function()
@@ -5,8 +8,9 @@ Todo: Build an event replacer for JS so I can have lots of event handlers for th
  * All events can now go through the eventer - allowing you to avoid having to method chain, and sort out what happens when you want to switch off your function.
 Todo: Can still keep pressing buttons quickly to get position out of sync with server.
 Todo: Users / Logins
- 	Update: forget about openid. 
-	 * Login using your RPOL username & password (unless RPOL wants to provide openid).
+Simple user details should suffice (email / password - create if not certain). 
+No capcha until spambots show up.
+
 	 * Create new maps by entering an image URL for the background, and a game id on RPOL (optionally specify a group).
 	 * Mappable pulls in all of that games character avatars & names.
 	 * GM is then presented with a list of characters and prompted to include/exclude & fill in movement info etc.
@@ -14,8 +18,6 @@ Todo: Users / Logins
 Todo: Users/Objects & Moves
 Todo: Users/Maps
 Todo: Add RSpec tests for controllers/models.
-Todo: Integrate with RPOL. To GM a game, enter your RPOL login details and the thread. 
-Everyone who has posted in the thread will be added to the game, along with their character profile.
 Todo: Should be able to hook afterMove() (to do ajax-y stuff) and afterMoveSuccess() (which should only be called when all registered AJAX is finished.)
 Todo: Diagonal movement.
 Todo: Track whose turn it is and how much movement/action everything has this turn.
