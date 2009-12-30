@@ -1,14 +1,16 @@
+<details>
 <%= render :partial => '/entities/form' %>
-
+</details>
 <% form_for @map, :html => { :method => :delete } do |f| %>
 	<%= submit_tag "Delete Map", :confirm => "Are you sure you want to completely delete this map?" %>
 <% end %>
 
-
+<% if @map.gm_is(current_user) %>
 <%= link_to "Next Turn", "/maps/next_turn/#{@map.id}", :confirm => "No further moves for this turn will be allowed. Really end the turn?" %>
+<% end %>
 <script>
 $(function() {
-	var map = new Map("/images/<%= @map.image_filename %>", 
+	var map = new Map("<%= @map.image_url %>", 
 		{
 			gridX: <%= @map.width %>, 
 			gridY:<%= @map.height %>, 

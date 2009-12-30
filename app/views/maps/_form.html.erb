@@ -1,11 +1,23 @@
 <% form_for @map do |f| %>
-	<p>Map Name: <%= f.text_field :name %></p>
-	<p>Map Filename: <%= f.text_field :image_filename %></p>
+<%= @map.errors.to_a.join("<br/>") %>
+	<p>Map Name: <%= f.text_field :name, :align => 'right' %></p>
+	<p>Map Image (url): <%= f.text_field :image_url %></p>
 	<p>Number of squares across: <%= f.text_field :width %></p>
 	<p>Number of squares down: <%= f.text_field :height %></p>
 	<p>X offset (pixels): <%= f.text_field :x_offset %></p>
 	<p>Y offset (pixels): <%= f.text_field :y_offset %></p>
-	<p>Game ID: <%= f.text_field :game_id %></p>
-	
+	<% if @map.new_record? %>
+		<fieldset>
+		<h3>Automatically load all the characters from an RPOL game</h3>
+		<p>Game ID: <%= f.text_field :game_id %></p>
+		<p>
+			<%= f.check_box :portrait_use %>
+			I have permission to use the portrait images for all characters in this game.<br/>
+			This is serious. I've no desire to put stolen art on this site. <br/>
+			Breaking this rule is likely to get you <b>permabanned</b>.<br/>
+			Contact the author of each portrait and ask them politely if you may use the image on this site. 
+		</p>
+		</fieldset>
+	<% end %>
 	<%= f.submit %>
 <% end %>

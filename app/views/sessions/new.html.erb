@@ -1,0 +1,26 @@
+<div id="text">
+  <h2>Welcome to Mappable. <br/>Login or sign up below.</h2>
+  <div>
+	Your email address will be used solely to identify you, and to recover your password.
+  </div>
+	
+  <div id="login_area">
+    <% form_tag sessions_path, :class => 'baseform', :id => 'emailform' do %>
+      <fieldset>
+        <ol> 
+          <li>
+            <label for="email">Username</label>
+            <input type="text" name="session[email]" id="email" class="required" />
+          </li>
+          <li>
+            <label for="password">Password</label> 
+            <input type="password" name="session[password]" id="password" class="required" /><br />
+          </li>
+          <li class="buttons">
+            <input type="submit" value="Login/Signup" />
+          </li>
+        </ol>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

@@ -1,8 +1,15 @@
 class Map < ActiveRecord::Base
   validates_uniqueness_of :name
+
+  attr_accessor :portrait_use
+  validates_acceptance_of :portrait_use, :on => :create
+
   has_many :entities
-  
-  def set_game_id_from_url(url)
-    # Parses the url looking for /[&?]gi=\d+/ and save the result into game_id
+  belongs_to :user
+
+
+  def gm_is(usr)
+    self.user == usr
   end
+  
 end

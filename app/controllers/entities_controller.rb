@@ -7,6 +7,7 @@ class EntitiesController < ApplicationController
 
   def create
     @entity = Entity.new(params[:entity])
+    @entity.user = current_user
     @entity.save ? redirect_to(@map) : render(:new)
   end
 

@@ -1,7 +1,9 @@
 class Entity < ActiveRecord::Base
-  # I really hope nothing in AR uses instance.map (aka collect).
-  # If I get wierd behavior, this might be one place to look.
+  # I really hope nothing in AR uses instance.map (aka collect), since it's used here to refer to a map.
+  # If I get wierd behavior, that might be one place to look.
+  
   belongs_to :map
+  belongs_to :user
   has_many :moves
   
   def apply_move(move)
@@ -14,6 +16,9 @@ class Entity < ActiveRecord::Base
   def movement_used_this_turn
     moves.find_all_by_turn(map.current_turn).collect(&:movement_used).sum.to_i
   end
-  
+
+  def is_controllable_by(usr)
+    (self.user == usr) || (self.map.user == usr)
+  end
 end
 

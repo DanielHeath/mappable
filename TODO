@@ -1,11 +1,13 @@
-Todo: Integrate with RPOL. To GM a game, enter your RPOL login details and the thread. 
-Everyone who has posted in the thread will be added to the game, along with their character profile.
+Users todo: 
+Show a private URL for each character/map
+Show character details when selected.
+Hide 'new character' form - put it in a details tag.
+Take over a character/map using its private URL
+
+
+
 
 Todos:
-Todo: Build an event replacer for JS so I can have lots of event handlers for the same event.
- * EVENTER.onLoad.myAppName = function()
- * EVENTER.onLoad.(un)suspend('myAppName') (moves function to 'suspended' internal variable)
- * All events can now go through the eventer - allowing you to avoid having to method chain, and sort out what happens when you want to switch off your function.
 Todo: Can still keep pressing buttons quickly to get position out of sync with server.
 Todo: Users / Logins
 Simple user details should suffice (email / password - create if not certain). 

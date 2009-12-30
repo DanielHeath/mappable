@@ -1,9 +1,17 @@
 class MapsController < ApplicationController
   # Tests: Only for actions of 3+ lines.
+  layout 'show_map', :only => :show
 
   def index
     @map = Map.new
-    @maps = Map.find :all
+    @maps = Map.find_by_sql ["
+      SELECT m.* 
+      FROM maps m
+      LEFT OUTER JOIN entities e
+      ON e.map_id = m.id
+      WHERE e.user_id = ?
+      OR m.user_id = ?
+      GROUP BY m.id", current_user.id, current_user.id]
   end
 
   def show
@@ -17,6 +25,7 @@ class MapsController < ApplicationController
 
   def create
     @map = Map.new(params[:map])
+    @map.user = current_user
     if @map.save
       if @map.game_id
         @entities = RPOLScraper.scrape_game_characters(@map, @map.game_id).flatten
@@ -53,6 +62,7 @@ class MapsController < ApplicationController
 
   def next_turn
     @map = Map.find(params[:id])
+    raise "Only the map owner may use the next turn button." unless @map.user == current_user
     @map.current_turn += 1
     @map.save!
     redirect_to @map

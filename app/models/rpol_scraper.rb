@@ -20,8 +20,9 @@ module RPOLScraper
     end
     characters.map {|name, image|
       [Entity.create( :map_id => map.id,
+                      :user_id => map.user_id,
                       :name => name.gsub('+', ' '),
-                      :image_filename => image
+                      :image_url => image
                       )]  
     }
   end

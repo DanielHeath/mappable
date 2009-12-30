@@ -1,8 +1,14 @@
-<% @maps.each do |map| %>
-	<p>
-		<%= link_to map.name, map %>
-	</p>
-<% end %>
-<hr/>
-New Map:
-<%= render :partial => 'form' %>
+<h1>Maps</h1>
+<ul>
+	<% @maps.each do |map| %>
+		<li><%= link_to map.name, map %></li>
+	<% end %>
+	<% if @maps.empty? %>
+		<li>You have no maps at this time.</li>
+	<% end %>
+</ul>
+
+<fieldset>
+	<h2>Create a new map:</h2>
+	<%= render :partial => 'form' %>
+</fieldset>

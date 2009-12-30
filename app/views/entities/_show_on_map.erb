@@ -1,12 +1,12 @@
 <% ename = entity.name.gsub(' ','_') %>
 var <%= entity.name.gsub(' ','_') %>_entity = new MapObject("<%= entity.name %>", 
 	map, 
-	"<%= entity.image_filename %>", 
+	"<%= entity.image_url %>", 
 	{
 		left:<%= entity.pos_x %>,
 		top:<%= entity.pos_y %>,
 		size:<%= entity.size %>,
-		locked:<%= entity.locked.inspect %>,
+		locked:<%= (entity.is_controllable_by(current_user) ? entity.locked : true).inspect %>,
 		deadzone:<%= entity.deadzone.inspect %>
 	}
 );
