@@ -1,0 +1,23 @@
+<a>
+	<div onclick="$('#mapManagementForm').toggle();">
+		<a href="#">Map Management</a>
+	</div>
+</a>
+<fieldset id="mapManagementForm" style="display: none;">
+	<a href="#" onclick="$('#newEntityForm').toggle();">
+		Add a new creature to the map
+	</a>
+	<fieldset id="newEntityForm" style="display: none;">
+		<%= render :partial => '/entities/form' %>
+	</fieldset>
+	
+	<p>
+		<%= link_to 'Edit map properties', :action => :edit, :id => @map.id %>
+	</p>
+	<p>
+		<%= link_to "End Turn #{@map.current_turn} (give all creatures back their movement allowance)", "/maps/next_turn/#{@map.id}", :confirm => "No further moves for this turn will be allowed. Really end the turn?" %>
+	</p>
+	<% form_for @map, :html => { :method => :delete } do |f| %>
+		<%= submit_tag "Delete Map", :confirm => "Are you sure you want to completely delete this map?" %>
+	<% end %>
+</fieldset>

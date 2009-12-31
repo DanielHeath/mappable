@@ -99,3 +99,9 @@ div.mapContainer {
 .overlappingMapObject {
 	opacity:0.5;
 }
+
+.characterInfoPanel {
+	position: absolute;
+	z-index: 100;
+	color: red;
+}

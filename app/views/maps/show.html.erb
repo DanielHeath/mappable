@@ -1,13 +1,7 @@
-<details>
-<%= render :partial => '/entities/form' %>
-</details>
-<% form_for @map, :html => { :method => :delete } do |f| %>
-	<%= submit_tag "Delete Map", :confirm => "Are you sure you want to completely delete this map?" %>
+<% if @map.gm_is(current_user) %>
+	<%= render :partial => 'management' %>
 <% end %>
 
-<% if @map.gm_is(current_user) %>
-<%= link_to "Next Turn", "/maps/next_turn/#{@map.id}", :confirm => "No further moves for this turn will be allowed. Really end the turn?" %>
-<% end %>
 <script>
 $(function() {
 	var map = new Map("<%= @map.image_url %>", 
@@ -17,8 +11,10 @@ $(function() {
 			xOffset:<%= @map.x_offset %>, 
 			yOffset:<%= @map.y_offset %>
 		});
-	
-	<%= render :partial => 'entities/show_on_map', :collection => @map.entities, :as => :entity %>
+	var entities = {};
+	<%= render :partial => 'entities/show_on_map.js', :collection => @map.entities, :as => :entity %>
 	MapObject.opacifyOverlapping();
 });
 </script>
+
+<%= render :partial => 'entities/show_on_map.html', :collection => @map.entities, :as => :entity %>

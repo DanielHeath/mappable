@@ -37,11 +37,10 @@ function MapObject(name, map, image, options) {
 	if (!MapObject.last_selected) {
 		this.makeSelected();
 	}
-	
 }
 
 MapObject.prototype.makeSelected = function () {
-	if (!this.options.locked) {
+	if (!this.options.locked && this.onSelected()) {
 		MapObject.last_selected = this;
 		jQuery(".selectedMapObject").removeClass("selectedMapObject");
 		this.element.addClass("selectedMapObject");
@@ -138,16 +137,16 @@ MapObject.selectNext = function () {
 	var i, current;
 	current = MapObject.list.indexOf(MapObject.last_selected);
 	i = 1;
+	// Will fail with more than 1000 locked entities on the map.
 	while ((i < 1000) && 
 				 (!MapObject.list[((current + i) % MapObject.list.length)].makeSelected())) {
-				
 		i = i + 1;
 	}
 };
 
 jQuery(function () {
 	// Onload, sets up a bunch of stuff.
-	jQuery("body").keydown(function (e) {
+	jQuery(document).keydown(function (e) {
 		var dx, dy;
 		dx = {
 			37: -1,
