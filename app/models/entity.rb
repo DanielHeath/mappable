@@ -6,6 +6,8 @@ class Entity < ActiveRecord::Base
   belongs_to :user
   has_many :moves
   
+  validates_uniqueness_of :name, :scope => :map_id
+  
   def apply_move(move)
     raise "This move doesn't match the servers data (expected #{pos_x}, #{pos_y}, got #{move.old_x}, #{move.old_y})" unless (move.old_x == pos_x) and (move.old_y == pos_y)
     raise "You've moved too far this turn" unless (movement_used_this_turn + move.movement_used) <= speed
@@ -20,5 +22,9 @@ class Entity < ActiveRecord::Base
   def is_controllable_by(usr)
     (self.user == usr) || (self.map.user == usr)
   end
+  
+  def secret_key
+    Encryption.encrypt("--#{user_id}-#{map_id}-#{name}-#{image_url}-")
+  end
+  
 end
-

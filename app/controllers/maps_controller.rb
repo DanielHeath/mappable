@@ -62,7 +62,7 @@ class MapsController < ApplicationController
 
   def next_turn
     @map = Map.find(params[:id])
-    raise "Only the map owner may use the next turn button." unless @map.user == current_user
+    raise "Only the map owner may use the next turn button." unless @map.gm_is(current_user)
     @map.current_turn += 1
     @map.save!
     redirect_to @map

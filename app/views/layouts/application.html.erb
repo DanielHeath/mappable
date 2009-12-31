@@ -9,6 +9,8 @@
 								'jquery.underscore' %>
   </head>
   <body>
+	<div id="notice"><%= flash[:notice] %></div>
+	<div id="error"><%= flash[:error] %></div>
 	<%= yield %>
   </body>
 </html>

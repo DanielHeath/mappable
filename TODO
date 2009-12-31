@@ -1,9 +1,12 @@
-Users todo: 
-Show a private URL for each character/map
-Show character details when selected.
-Hide 'new character' form - put it in a details tag.
-Take over a character/map using its private URL
+Show character details when selected, including the private takeover URL
+Show the takeover URL for owned maps (/ownership/map/id/secret_key).
 
+Hide 'new character' form on map screen - put it under some navigation or in a details tag or something
+
+Bring images into main application.
+ - Store in DB blobs for now.
+ - Use md5 to ensure uniqueness - so that an image can be marked as banned from the site & prevent re-uploads.
+image -> image_source_urls (as the same image may be added from multiple sources and we don't want to re-download it.)
 
 
 
@@ -12,7 +15,6 @@ Todo: Can still keep pressing buttons quickly to get position out of sync with s
 Todo: Users / Logins
 Simple user details should suffice (email / password - create if not certain). 
 No capcha until spambots show up.
-
 	 * Create new maps by entering an image URL for the background, and a game id on RPOL (optionally specify a group).
 	 * Mappable pulls in all of that games character avatars & names.
 	 * GM is then presented with a list of characters and prompted to include/exclude & fill in movement info etc.

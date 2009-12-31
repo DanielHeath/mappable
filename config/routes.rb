@@ -45,6 +45,8 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.root :controller => :maps
   map.resources :moves, :only => :create
+  
+  map.connect 'ownership/:action/:id/:secret_key', :controller => :ownership
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
